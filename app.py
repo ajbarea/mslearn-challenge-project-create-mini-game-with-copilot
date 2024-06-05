@@ -43,6 +43,8 @@ def rock_paper_scissors():
     player_score = 0
     # Defining the computer's score
     computer_score = 0
+    # Count the number of tie games
+    ties = 0
 
     # Call the function to display the welcome message
     display_welcome_message()
@@ -59,18 +61,19 @@ def rock_paper_scissors():
         # Getting the computer's move
         computer_move = random.choice(options)
         # Displaying the player's move
-        print("You chose:", player_move)
+        print("You chose ", player_move, "...")
         # Displaying the computer's move
-        print("Opponent chose:", computer_move)
+        print("Your opponent chose ", computer_move, "...")
 
         # Determining the winner of the game
         if player_move == computer_move:
-            print("It's a tie!")
+            print("--- It's a tie!")
+            ties += 1
         elif (player_move == "rock" and computer_move == "scissors") or (player_move == "scissors" and computer_move == "paper") or (player_move == "paper" and computer_move == "rock"):
-            print("You won!")
+            print("--- You won!")
             player_score += 1
         else:
-            print("You lost!")
+            print("--- You lose!")
             computer_score += 1
 
         # Asking the player if they want to play again
@@ -81,12 +84,14 @@ def rock_paper_scissors():
             play_again = input("Do you want to play again? (yes/no): ").lower()
         # Checking if the player wants to play again
         if play_again == "no":
+            print("\n       ------------- GAME OVER -------------")
             print("Thank you for playing the Rock, Paper, Scissors game!")
             # Displaying the player's score
-            print("FINAL SCORES:")
+            print("You played a total of ", player_score + computer_score + ties, "round(s)!")
+            print("\nFINAL SCORES:")
             print("Your score:", player_score)
             # Displaying the computer's score
-            print("Computer's score:", computer_score)
+            print("Opponent's score:", computer_score)
             break
         
 # Calling the main function of the game
